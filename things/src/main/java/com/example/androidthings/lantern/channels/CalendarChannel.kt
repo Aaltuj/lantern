@@ -58,7 +58,7 @@ class CalendarChannel : Channel() {
     private var refreshEventsTimer: Timer? = null
     private val iCalURL: URL? by lazy {
         val urlString = config.secrets?.opt("url") as? String
-        urlString?.let { URL(it) }
+        urlString?.let { URL("https://calendar.google.com/calendar/ical/aaltuj%40gmail.com/public/basic.ics") }
     }
 
 

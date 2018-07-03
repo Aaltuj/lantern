@@ -26,13 +26,13 @@ class ConfigurationConnection(val transport: ConfigurationConnectionTransport) {
         Log.i(TAG, "Connected to ${transport.endpointId}")
         sendStateUpdate()
         sendAvailableChannels()
-        App.instance.accelerometer.addObserver(accelerometerObserver)
+       // App.instance.accelerometer.addObserver(accelerometerObserver)
         App.instance.config.addObserver(appConfigObserver)
     }
 
     fun onDisconnected() {
         Log.i(TAG, "Disconnected from ${transport.endpointId}")
-        App.instance.accelerometer.deleteObserver(accelerometerObserver)
+     //   App.instance.accelerometer.deleteObserver(accelerometerObserver)
         App.instance.config.deleteObserver(appConfigObserver)
     }
 
@@ -65,7 +65,7 @@ class ConfigurationConnection(val transport: ConfigurationConnectionTransport) {
 
     private fun sendStateUpdate() {
         val body = App.instance.config.toJson(includingSecrets = false).clone()
-        body.put("direction", App.instance.accelerometer.direction?.jsonName)
+        body.put("direction", "forward")
         val message = ConfigurationMessage(ConfigurationMessage.Type.STATE_UPDATE, body = body)
         transport.sendMessage(message)
     }

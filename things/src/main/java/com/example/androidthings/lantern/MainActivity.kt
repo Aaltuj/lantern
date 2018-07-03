@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        App.instance.accelerometer.addObserver(accelerometerObserver)
+       // App.instance.accelerometer.addObserver(accelerometerObserver)
         App.instance.config.addObserver(appConfigObserver)
 
         setContentView(R.layout.main_activity_layout)
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        App.instance.accelerometer.deleteObserver(accelerometerObserver)
+       // App.instance.accelerometer.deleteObserver(accelerometerObserver)
         App.instance.config.deleteObserver(appConfigObserver)
     }
 
@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun accelerometerUpdated() {
-        Log.d(TAG, "accelerometer direction updated to ${App.instance.accelerometer.direction}")
+       // Log.d(TAG, "accelerometer direction updated to ${App.instance.accelerometer.direction}")
         updateVisibleChannel()
     }
 
@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateVisibleChannel() {
-        val newVisibleChannel = channels[App.instance.accelerometer.direction]
+        val newVisibleChannel = channels[Direction.FORWARD]
         val oldVisibleChannel = visibleChannel
 
         if (oldVisibleChannel == newVisibleChannel) {

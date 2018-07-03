@@ -31,7 +31,7 @@ class LaunchActivity: AppCompatActivity() {
         setupDisplay()
 
         try {
-            App.instance.accelerometer
+           // App.instance.accelerometer
         } catch (error: Exception) {
             timeRemainingTextView.text = ""
             errorMessageTextView.text = "Unable to detect accelerometer. Please power off the device and check the connection."
